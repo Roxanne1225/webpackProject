@@ -59,7 +59,15 @@ const AudioUpload: React.FC<AudioUploadProps> = ({
       <label style={{ padding: 5 }}>
         Please select a music or upload one (请选择或上传音乐)
       </label>
-      <div style={{ display: "flex", maxWidth: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          maxWidth: "100%",
+          width: "100%",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
         <input
           style={{ fontSize: 20, padding: "2%" }}
           type="file"
