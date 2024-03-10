@@ -9,6 +9,7 @@ module.exports = {
     filename: "[name].[contenthash].js",
     clean: true,
     assetModuleFilename: "[name][ext]",
+    assetModuleFilename: "assets/[hash][ext][query]",
   },
   devtool: "source-map",
   devServer: {
@@ -29,6 +30,14 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.mp3$/,
+        type: "asset/resource",
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
