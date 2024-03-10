@@ -15,6 +15,10 @@ const AudioUpload: React.FC<AudioUploadProps> = ({
   const [isPlaying, setIsPlaying] = useState("");
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
+    if (isPlaying) {
+      setIsPlaying("");
+      onStopPlaying();
+    }
     if (files && files[0]) {
       setIsPlaying("file");
       onFileSelect(files[0]);
@@ -69,11 +73,14 @@ const AudioUpload: React.FC<AudioUploadProps> = ({
         }}
       >
         <input
-          style={{ fontSize: 20, padding: "2%" }}
+          style={{
+            fontSize: "2vh",
+            padding: "2%",
+          }}
           type="file"
           id="audioUpload"
           className="audioUploadInputHide"
-          accept="audio/*"
+          accept="audio/mp3"
           onChange={handleFileChange}
         />
         <button
