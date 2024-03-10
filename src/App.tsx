@@ -1,5 +1,9 @@
+import Ball from "./components/Ball";
+import MusicVisualizer from "./components/MusicVisualizer/MusicVisualizer";
+
 const App = () => {
-  return <>my app</>;
+  // return <Ball />
+  return <MusicVisualizer />;
 };
 
 export default App;

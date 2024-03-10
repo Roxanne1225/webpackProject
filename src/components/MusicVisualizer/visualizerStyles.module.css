@@ -1,0 +1,58 @@
+/* styles.scss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  /* // padding: 20px;
+  // background-color: #f0f0f0; */
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.button {
+  padding: 7px 15px;
+  font-size: 16px;
+  color: #fff;
+  margin: 10px;
+  background-color: #76a2d2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-wrap: nowrap;
+}
+/* AudioUpload.module.css */
+
+.functionContainer {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  max-width: 90%;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: lightblue;
+}
+.uploadContainer {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.copyRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2;
+}
