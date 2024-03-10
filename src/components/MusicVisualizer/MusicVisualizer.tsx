@@ -63,38 +63,44 @@ const MusicVisualizer: React.FC = () => {
     isPlayingRef.current = true;
     fileReader.readAsArrayBuffer(file);
     fileReader.onloadend = async () => {
-      const audioBuffer = await audioContext.decodeAudioData(
-        fileReader.result as ArrayBuffer
-      );
-      //Creates an AnalyserNode from the AudioContext. An AnalyserNode is used for real-time frequency and time-domain analysis of the audio.
-      const analyserNode = audioContext.createAnalyser();
-      //   This affects the detail level of the analysis. A larger FFT size gives more precise data but can be computationally more expensive.
-      analyserNode.fftSize = 1024;
+      try {
+        const audioBuffer = await audioContext.decodeAudioData(
+          fileReader.result as ArrayBuffer
+        );
+        //Creates an AnalyserNode from the AudioContext. An AnalyserNode is used for real-time frequency and time-domain analysis of the audio.
+        const analyserNode = audioContext.createAnalyser();
+        //   This affects the detail level of the analysis. A larger FFT size gives more precise data but can be computationally more expensive.
+        analyserNode.fftSize = 1024;
 
-      //Creates an AudioBufferSourceNode, which is used to play back the AudioBuffer.
-      const source = audioContext.createBufferSource();
-      setMusicSource(source);
+        //Creates an AudioBufferSourceNode, which is used to play back the AudioBuffer.
+        const source = audioContext.createBufferSource();
+        setMusicSource(source);
 
-      source.buffer = audioBuffer;
-      source.connect(analyserNode);
-      //Connects the AnalyserNode to the AudioContext's destination (usually the speakers), allowing the audio to be heard.
-      analyserNode.connect(audioContext.destination);
+        source.buffer = audioBuffer;
+        source.connect(analyserNode);
+        //Connects the AnalyserNode to the AudioContext's destination (usually the speakers), allowing the audio to be heard.
+        analyserNode.connect(audioContext.destination);
 
-      source.start(0);
+        source.start(0);
 
-      //This value is half of the fftSize.
-      const bufferLength = analyserNode.frequencyBinCount;
-      const newMusicDataArray = new Uint8Array(bufferLength);
-      setMusicDataArray(newMusicDataArray);
+        //This value is half of the fftSize.
+        const bufferLength = analyserNode.frequencyBinCount;
+        const newMusicDataArray = new Uint8Array(bufferLength);
+        setMusicDataArray(newMusicDataArray);
 
-      const animate = () => {
-        if (!analyserNode || !isPlayingRef.current) return;
-        requestAnimationFrame(animate);
+        const animate = () => {
+          if (!analyserNode || !isPlayingRef.current) return;
+          requestAnimationFrame(animate);
 
-        analyserNode.getByteFrequencyData(newMusicDataArray);
-        setMusicDataArray(new Uint8Array(newMusicDataArray));
-      };
-      animate();
+          analyserNode.getByteFrequencyData(newMusicDataArray);
+          setMusicDataArray(new Uint8Array(newMusicDataArray));
+        };
+        animate();
+      } catch (error) {
+        alert(
+          "Error decoding music file, only .mp3 files are supported! \n 解析音频文件失败！请上传mp3文件"
+        );
+      }
     };
   };
 
