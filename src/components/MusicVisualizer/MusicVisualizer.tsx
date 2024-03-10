@@ -3,7 +3,7 @@ import AudioUpload from "./AudioUpload";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
-import styles from "./visualizerStyles.module.css";
+import styles from "./visualizerStyles.css";
 
 interface VisualizationProps {
   musicDataArray: Uint8Array | null;
