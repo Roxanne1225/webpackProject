@@ -99,7 +99,7 @@ const MusicVisualizer: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <div className="container">
         <h1>Roxanne's Music Visualizer</h1>
         <h2>音乐可视化工具</h2>
@@ -126,8 +126,8 @@ const MusicVisualizer: React.FC = () => {
           <Canvas
             camera={{ position: [0, 0, 30], fov: 100 }}
             style={{
-              width: "80%",
-              height: "80%",
+              width: "100%",
+              height: "100%",
               backgroundColor: "lightblue",
             }}
           >
