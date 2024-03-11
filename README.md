@@ -49,5 +49,6 @@ To set up this project locally, follow these steps:
 Experience the Music Visualizer in action [here](https://roxanne1225.netlify.app/).
 
 ## 项目截图和视频演示 - Screenshots
+https://github.com/Roxanne1225/webpackProject/assets/35541190/c331af39-52b6-49a5-bb00-56a2be6b76db
 
-![musicVisualizer](musicVisualizer.png)
+
